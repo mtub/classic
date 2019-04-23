@@ -1,8 +1,8 @@
 {**
  * plugins/generic/pdfJsViewer/templates/display.tpl
  *
- * Copyright (c) 2014-2018 Simon Fraser University
- * Copyright (c) 2003-2018 John Willinsky
+ * Copyright (c) 2014-2019 Simon Fraser University
+ * Copyright (c) 2003-2019 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @brief Template to view a PDF or HTML galley
@@ -10,8 +10,8 @@
 
 <!DOCTYPE html>
 <html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}">
-{capture assign="pageTitleTranslated"}{translate key="article.pageTitle" title=$title}{/capture}
-{include file="frontend/components/headerHead.tpl" pageTitleTranslated=$pageTitleTranslated}
+{capture assign="pageTitleTranslated"}{translate key="article.pageTitle" title=$title|escape}{/capture}
+{include file="frontend/components/headerHead.tpl" pageTitleTranslated=$pageTitleTranslated|escape}
 <body class="page-view-pdf">
 	<div class="pdf-header">
 		<div class="pdf-return-article">
@@ -24,7 +24,7 @@
 						{translate key="article.return"}
 					{/if}
 				</span>
-				{$title}
+				{$title|escape}
 			</a>
 		</div>
 		<div class="pdf-download-button">

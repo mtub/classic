@@ -1,8 +1,8 @@
  {**
  * templates/frontend/objects/article_details.tpl
  *
- * Copyright (c) 2014-2018 Simon Fraser University
- * Copyright (c) 2003-2018 John Willinsky
+ * Copyright (c) 2014-2019 Simon Fraser University
+ * Copyright (c) 2003-2019 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @brief View of an Article which displays all details about the article.
@@ -99,7 +99,7 @@
 							</a>
 						{/if}
 						<div class="collapse" id="authorInfoCollapse">
-							{foreach from=$article->getAuthors() item=author}
+							{foreach from=$article->getAuthors() item=author key=number}
 								<div class="additional-author-block">
 									{if $author->getLocalizedAffiliation() || $author->getLocalizedBiography()}
 										<span class="additional-author-name">{$author->getFullName()|escape}</span>
@@ -110,11 +110,11 @@
 									{/if}
 									{if $author->getLocalizedBiography()}
 										<br/>
-										<a class="more_button" data-toggle="modal" data-target="#modalAuthorBio">
+										<a class="more_button" data-toggle="modal" data-target="#modalAuthorBio-{$number}">
 											{translate key="plugins.themes.classic.biography"}
 										</a>
 										{* author's biography *}
-										<div class="modal fade" id="modalAuthorBio" tabindex="-1" role="dialog" aria-labelledby="modalAuthorBioTitle" aria-hidden="true">
+										<div class="modal fade" id="modalAuthorBio-{$number}" tabindex="-1" role="dialog" aria-labelledby="modalAuthorBioTitle" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-header">
@@ -161,7 +161,7 @@
 			{* DOI (requires plugin) *}
 			{foreach from=$pubIdPlugins item=pubIdPlugin}
 				{if $pubIdPlugin->getPubIdType() != 'doi'}
-					{php}continue;{/php}
+					{continue}
 				{/if}
 				{assign var=pubId value=$article->getStoredPubId($pubIdPlugin->getPubIdType())}
 				{if $pubId}
@@ -277,13 +277,13 @@
 					{if $licenseUrl}
 						{if $ccLicenseBadge}
 							{if $copyrightHolder}
-								<p>{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder copyrightYear=$copyrightYear}</p>
+								<p>{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder|escape copyrightYear=$copyrightYear|escape}</p>
 							{/if}
 							{$ccLicenseBadge}
 						{else}
 							<a href="{$licenseUrl|escape}" class="copyright">
 								{if $copyrightHolder}
-									{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder copyrightYear=$copyrightYear}
+									{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder|escape copyrightYear=$copyrightYear|escape}
 								{else}
 									{translate key="submission.license"}
 								{/if}

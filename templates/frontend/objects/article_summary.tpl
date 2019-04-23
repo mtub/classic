@@ -1,8 +1,8 @@
 {**
  * templates/frontend/objects/article_summary.tpl
  *
- * Copyright (c) 2014-2018 Simon Fraser University
- * Copyright (c) 2003-2018 John Willinsky
+ * Copyright (c) 2014-2019 Simon Fraser University
+ * Copyright (c) 2003-2019 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @brief View of an Article summary which is shown within a list of articles.
@@ -21,19 +21,27 @@
 	{assign var="showAuthor" value=true}
 {/if}
 
-<div class="article_summary">
+<article class="article_summary">
 	<div class="article_summary_body">
-		<div class="summary_title_wrapper">
-			<a class="summary_title" {if $journal}href="{url journal=$journal->getPath() page="article" op="view" path=$articlePath}"{else}href="{url page="article" op="view" path=$articlePath}"{/if}>
-				{$article->getLocalizedFullTitle()|escape}
-			</a>
-		</div>
+		{if $headingLevel}
+			<h{$headingLevel} class="summary_title_wrapper">
+				<a class="summary_title" {if $journal}href="{url journal=$journal->getPath() page="article" op="view" path=$articlePath}"{else}href="{url page="article" op="view" path=$articlePath}"{/if}>
+					{$article->getLocalizedFullTitle()|escape}
+				</a>
+			</h{$headingLevel}>
+		{else}
+			<div class="summary_title_wrapper">
+				<a class="summary_title" {if $journal}href="{url journal=$journal->getPath() page="article" op="view" path=$articlePath}"{else}href="{url page="article" op="view" path=$articlePath}"{/if}>
+					{$article->getLocalizedFullTitle()|escape}
+				</a>
+			</div>
+		{/if}
 
 		{if $showAuthor || $article->getPages() || ($article->getDatePublished() && $showDatePublished)}
 		<div class="summary_meta">
 			{if $showAuthor}
 			<div class="authors">
-				{$article->getAuthorString()}
+				{$article->getAuthorString()|escape}
 			</div>
 			{/if}
 
@@ -60,7 +68,7 @@
 				{if $primaryGenreIds}
 					{assign var="file" value=$galley->getFile()}
 					{if !$galley->getRemoteUrl() && !($file && in_array($file->getGenreId(), $primaryGenreIds))}
-						{php}continue;{/php}
+						{continue}
 					{/if}
 				{/if}
 				{assign var="hasArticleAccess" value=$hasAccess}
@@ -73,4 +81,4 @@
 	{/if}
 
 	{call_hook name="Templates::Issue::Issue::Article"}
-</div>
+</article>

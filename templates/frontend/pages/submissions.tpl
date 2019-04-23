@@ -1,8 +1,8 @@
 {**
  * templates/frontend/pages/submissions.tpl
  *
- * Copyright (c) 2014-2018 Simon Fraser University
- * Copyright (c) 2003-2018 John Willinsky
+ * Copyright (c) 2014-2019 Simon Fraser University
+ * Copyright (c) 2003-2019 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @brief Display the page to view the editorial team.
@@ -16,7 +16,7 @@
 <main class="page page_submissions">
 	<div class="container-fluid container-page container-narrow">
 
-		{include file="frontend/components/breadcrumbs.tpl" currentTitleKey="about.submissions"}
+		{include file="frontend/components/headings.tpl" currentTitleKey="about.submissions"}
 
 		{* Login/register prompt *}
 		{if $isUserLoggedIn}

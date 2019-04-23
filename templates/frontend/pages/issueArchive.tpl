@@ -1,8 +1,8 @@
 {**
  * templates/frontend/pages/issueArchive.tpl
  *
- * Copyright (c) 2014-2018 Simon Fraser University
- * Copyright (c) 2003-2018 John Willinsky
+ * Copyright (c) 2014-2019 Simon Fraser University
+ * Copyright (c) 2003-2019 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @brief Display a list of recent issues.
@@ -27,7 +27,7 @@
 <main class="page page_issue_archive">
 	<div class="container-fluid container-page">
 
-		{include file="frontend/components/breadcrumbs.tpl" currentTitle=$pageTitle}
+		{include file="frontend/components/headings.tpl" currentTitle=$pageTitle}
 
 		{* No issues have been published *}
 		{if empty($issues)}

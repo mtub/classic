@@ -1,8 +1,8 @@
 {**
  * templates/frontend/pages/error.tpl
  *
- * Copyright (c) 2014-2018 Simon Fraser University
- * Copyright (c) 2000-2018 John Willinsky
+ * Copyright (c) 2014-2019 Simon Fraser University
+ * Copyright (c) 2000-2019 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Generic error page.
@@ -13,7 +13,7 @@
 
 <main class="page page_error">
 	<div class="container-fluid container-page container-narrow">
-		{include file="frontend/components/breadcrumbs.tpl" currentTitleKey=$pageTitle}
+		{include file="frontend/components/headings.tpl" currentTitleKey=$pageTitle}
 		<div class="error-description">
 			<p>{translate key=$errorMsg params=$errorParams}</p>
 		</div>

@@ -1,8 +1,8 @@
 {**
  * templates/frontend/components/navigationMenu.tpl
  *
- * Copyright (c) 2014-2018 Simon Fraser University
- * Copyright (c) 2003-2018 John Willinsky
+ * Copyright (c) 2014-2019 Simon Fraser University
+ * Copyright (c) 2003-2019 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @brief Template for primary and user menus
@@ -13,7 +13,7 @@
 	<ul id="{$id|escape}" class="{$ulClass|escape} nav nav-tabs">
 		{foreach key=field item=navigationMenuItemAssignment from=$navigationMenu->menuTree}
 			{if !$navigationMenuItemAssignment->navigationMenuItem->getIsDisplayed()}
-				{php}continue;{/php}
+				{continue}
 			{/if}
 			{if !empty($navigationMenuItemAssignment->children)}
 				{assign var=navItemType value=$navigationMenuItemAssignment->navigationMenuItem->getType()|escape}

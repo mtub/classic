@@ -1,8 +1,8 @@
 {**
  * templates/frontend/pages/issue.tpl
  *
- * Copyright (c) 2014-2018 Simon Fraser University
- * Copyright (c) 2003-2018 John Willinsky
+ * Copyright (c) 2014-2019 Simon Fraser University
+ * Copyright (c) 2003-2019 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @brief Display a landing page for a single issue. It will show the table of contents
@@ -16,19 +16,19 @@
  * @uses $primaryGenreIds array List of file genre IDs for primary types
  *}
 
-{include file="frontend/components/header.tpl" pageTitleTranslated=$issueIdentification}
+{include file="frontend/components/header.tpl" pageTitleTranslated=$issueIdentification|escape}
 
 <main class="page page_issue">
 	<div class="container-fluid container-page">
 
 		{* Display a message if no current issue exists *}
 		{if !$issue}
-			{include file="frontend/components/breadcrumbs.tpl" currentTitleKey="current.noCurrentIssue"}
+			{include file="frontend/components/headings.tpl" currentTitleKey="current.noCurrentIssue"}
 			{include file="frontend/components/notification.tpl" type="warning" messageKey="current.noCurrentIssueDesc"}
 
 		{* Display an issue with the Table of Contents *}
 		{else}
-			{include file="frontend/components/breadcrumbs.tpl" currentTitle=$issueIdentificationString}
+			{include file="frontend/components/headings.tpl" currentTitle=$issueIdentificationString}
 			{include file="frontend/objects/issue_toc.tpl"}
 		{/if}
 	</div>

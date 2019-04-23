@@ -1,8 +1,8 @@
 {**
  * templates/frontend/pages/search.tpl
  *
- * Copyright (c) 2014-2018 Simon Fraser University
- * Copyright (c) 2003-2018 John Willinsky
+ * Copyright (c) 2014-2019 Simon Fraser University
+ * Copyright (c) 2003-2019 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @brief Display the page to search and view search results.
@@ -20,9 +20,9 @@
 {include file="frontend/components/header.tpl" pageTitle="common.search"}
 
 <main class="page page_search">
-	<div class="container-fluid container-page">
+	<section class="container-fluid container-page">
 
-		{include file="frontend/components/breadcrumbs.tpl" currentTitleKey="common.search"}
+		{include file="frontend/components/headings.tpl" currentTitleKey="common.search"}
 
 		<div class="row">
 			<form class="cmp_form col-sm-10 offset-sm-1 col-md-8 offset-md-2" method="post" action="{url op="search"}">
@@ -74,7 +74,7 @@
 		{if !$results->wasEmpty()}
 			<div class="search_results">
 				{iterate from=results item=result}
-					{include file="frontend/objects/article_summary.tpl" article=$result.publishedArticle journal=$result.journal showDatePublished=true hideGalleys=true}
+					{include file="frontend/objects/article_summary.tpl" headingLevel="2" article=$result.publishedArticle journal=$result.journal showDatePublished=true hideGalleys=true}
 				{/iterate}
 			</div>
 		{/if}
@@ -103,7 +103,7 @@
 			</div>
 		{/if}
 
-	</div>
+	</section>
 </main><!-- .page -->
 
 {include file="frontend/components/footer.tpl"}

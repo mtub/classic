@@ -1,8 +1,8 @@
 {**
  * templates/frontend/components/header.tpl
  *
- * Copyright (c) 2014-2018 Simon Fraser University
- * Copyright (c) 2003-2018 John Willinsky
+ * Copyright (c) 2014-2019 Simon Fraser University
+ * Copyright (c) 2003-2019 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @brief Site-wide header; includes journal logo, user menu, and primary menu
@@ -16,9 +16,9 @@
 	{/if}
 
 	{if $currentContext && $multipleContexts}
-		{url|assign:"homeUrl" page="index" router=$smarty.const.ROUTE_PAGE}
+		{capture assign="homeUrl"}{url page="index" router=$smarty.const.ROUTE_PAGE}{/capture}
 	{else}
-		{url|assign:"homeUrl" context="index" router=$smarty.const.ROUTE_PAGE}
+		{capture assign="homeUrl"}{url context="index" router=$smarty.const.ROUTE_PAGE}{/capture}
 	{/if}
 {/strip}
 
@@ -39,17 +39,19 @@
 
 <!DOCTYPE html>
 <html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}">
-{if !$pageTitleTranslated}{translate|assign:"pageTitleTranslated" key=$pageTitle}{/if}
+{if !$pageTitleTranslated}
+	{capture assign="pageTitleTranslated"}{translate key=$pageTitle}{/capture}
+{/if}
 {include file="frontend/components/headerHead.tpl"}
 <body>
 <header>
 	<div class="header container-fluid">
 		<div class="upper-header row">
-			<div class="logo-wraper col-md-7">
+			<h1 class="logo-wrapper col-md-7">
 				<a href="{$homeUrl}" class="home-link">
 					{$journalLogo}
 				</a>
-			</div>
+			</h1>
 			<div id="user-nav-wraper" class="col-md-5">
 				{* user navigation manu *}
 				{load_menu name="user" id="navigationUser" ulClass="pkp_navigation_user"}
@@ -86,6 +88,3 @@
 		{/if}
 	</div>
 </header>
-
-
-

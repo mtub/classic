@@ -1,8 +1,8 @@
 {**
  * templates/frontend/pages/userRegisterComplete.tpl
  *
- * Copyright (c) 2014-2018 Simon Fraser University
- * Copyright (c) 2000-2018 John Willinsky
+ * Copyright (c) 2014-2019 Simon Fraser University
+ * Copyright (c) 2000-2019 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @brief A landing page displayed to users upon successful registration
@@ -12,7 +12,7 @@
 
 <main class="page page_register_complete">
 	<div class="container-fluid container-page">
-		{include file="frontend/components/breadcrumbs.tpl" currentTitleKey=$pageTitle}
+		{include file="frontend/components/headings.tpl" currentTitleKey=$pageTitle}
 		<p class="registration-complete-instructions">
 			{translate key="user.login.registrationComplete.instructions"}
 		</p>

@@ -1,8 +1,8 @@
 {**
  * templates/frontend/pages/searchAuthorDetails.tpl
  *
- * Copyright (c) 2014-2018 Simon Fraser University
- * Copyright (c) 2003-2018 John Willinsky
+ * Copyright (c) 2014-2019 Simon Fraser University
+ * Copyright (c) 2003-2019 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Index of published articles by author.
@@ -15,7 +15,7 @@
 
 <div class="page page-author-details">
 	<div class="container-fluid container-page container-narrow">
-		{include file="frontend/components/breadcrumbs.tpl" currentTitleKey="search.authorDetails"}
+		{include file="frontend/components/headings.tpl" currentTitleKey="search.authorDetails"}
 
 		<div class="page-content" id="authorDetails">
 			<h3 class="author-details-author text-lg-center">{$lastName|escape}, {$firstName|escape}{if $middleName} {$middleName|escape}{/if}{if $affiliation}, {$affiliation|escape}{/if}{if $country}, {$country|escape}{/if}</h3>
